@@ -7,4 +7,5 @@ interface Auction {
     function bid() payable;
 
     function end();
+
 }
