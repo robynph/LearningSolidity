@@ -3,7 +3,7 @@ This is the framework from the the casino app but has only been prepped up to pr
 
 When complete, you should have a screen that looks like this;
 
-[screenshot after init & npm start](LearningSolidity/CCHack/starter/npm_start_screenshot.png)
+[screenshot after init & npm start](/npm_start_screenshot.png)
 
 
 # betting-dapp -> updated to "starter-dapp" for CryptoChicks hackathon
