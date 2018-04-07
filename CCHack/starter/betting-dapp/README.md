@@ -1,5 +1,4 @@
-
-# betting-dapp -> updated to "starter-dapp" for CryptoChicks hackathon
+# betting-dapp
 
 > A Vue.js project
 
