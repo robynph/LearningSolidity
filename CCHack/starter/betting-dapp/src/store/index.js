@@ -46,15 +46,9 @@ export const store = new Vuex.Store({
        // console.log('pollWeb3 action being executed')
        commit('pollWeb3Instance', payload)
     },
-    getContractInstance ({commit}) {
-      console.log("getContractInstance called!")
-      contract().createContract(function(err, result) {
-        console.log(result)
-      })
-      // createContract.then(result => {
-      //   console.log("getConstractInstance result", result)
-      //   commit('registerContractInstance', result)
-      // }).catch(e => console.log(e))
+    setContractInstance({commit}, payload) {
+        console.log("getConstractInstance result", payload)
+        commit('registerContractInstance', payload)
     }
   }
 })

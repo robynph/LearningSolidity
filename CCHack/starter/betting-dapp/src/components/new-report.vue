@@ -41,13 +41,14 @@
       </md-card>
     </div>
   </div>
-  
+
 </template>
 
 <script>
   import InfoText from "@/components/InfoText";
   import FileUploadz from "@/components/FileUploadz";
-  
+  import Contract from "@/util/Contract";
+
   export default {
     name: 'new-report',
     data() {
@@ -61,10 +62,30 @@
       FileUploadz
     },
      methods: {
-        packageSend(){ 
+        packageSend(){
+          var contract = this.$store.state.contractInstance();
+          if (contract) {
+            this.messageSend(contract);
+          } else {
+            Contract.createContract(function() {
+              console.log(result)
+              this.messageSend(result)
+            })
+          }
+        },
+        messageSend(contract) {
+          var text = "Test";
+          var attachment = getAttachmentHash();
 
-          //when successful
-            this.isSubmitted = true
+          Contract.addMessage(contract, text, attachment, function(err, result) {
+            if (result) {
+              console.log(result);
+              this.isSubmitted = true;
+            }
+          })
+        },
+        getAttachmentHash() {
+
         }
     }
 

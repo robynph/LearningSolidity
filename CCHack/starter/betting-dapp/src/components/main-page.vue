@@ -38,16 +38,23 @@
     },
     methods: {
       createContract (event) {
-        console.log("Try to create!");
-        Contract.createContract(function(err, result) {
-          console.log(result);
-        })
+        this.getExistingContract(event);
+        // console.log("Try to create!");
+        // Contract.createContract(function(err, result) {
+        //   console.log(result);
+        //   this.$store.state.contractInstance() = result;
+        // })
       },
       getExistingContract (event) {
         console.log("Getting existing");
+        var that = this;
         Contract.getExistingContract(Contract.existingContractId, function(err, result) {
           console.log(result);
+          that.storeContract(result);
         });
+      },
+      storeContract(contract) {
+        this.$store.dispatch('setContractInstance', contract);
       }
     }
   }
