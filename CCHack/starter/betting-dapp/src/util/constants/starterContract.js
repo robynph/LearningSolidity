@@ -1,79 +1,203 @@
-const address = '0x526B2949670906E829D30b0e941EF2325193Eaec'
+const contract = "0x1bf65e4b9791ea02a8f97424d6b1ea209aff626a"
+const hrAddress = "0x526B2949670906E829D30b0e941EF2325193Eaec"
 const ABI = [
-	{
-		"constant": true,
-		"inputs": [],
-		"name": "checkContractBalance",
-		"outputs": [
-			{
-				"name": "",
-				"type": "uint256"
-			}
-		],
-		"payable": false,
-		"stateMutability": "view",
-		"type": "function"
-	},
-	{
-		"anonymous": false,
-		"inputs": [
-			{
-				"indexed": false,
-				"name": "_status",
-				"type": "bool"
-			},
-			{
-				"indexed": false,
-				"name": "_amount",
-				"type": "uint256"
-			}
-		],
-		"name": "Won",
-		"type": "event"
-	},
-	{
-		"constant": false,
-		"inputs": [
-			{
-				"name": "_number",
-				"type": "uint256"
-			}
-		],
-		"name": "bet",
-		"outputs": [],
-		"payable": true,
-		"stateMutability": "payable",
-		"type": "function"
-	},
-	{
-		"constant": false,
-		"inputs": [],
-		"name": "kill",
-		"outputs": [],
-		"payable": false,
-		"stateMutability": "nonpayable",
-		"type": "function"
-	},
-	{
-		"inputs": [
-			{
-				"name": "_minBet",
-				"type": "uint256"
-			},
-			{
-				"name": "_houseEdge",
-				"type": "uint256"
-			}
-		],
-		"payable": true,
-		"stateMutability": "payable",
-		"type": "constructor"
-	},
-	{
-		"payable": false,
-		"stateMutability": "nonpayable",
-		"type": "fallback"
-	}
-]
+   {
+      "constant":false,
+      "inputs":[
+         {
+            "name":"_sender",
+            "type":"address"
+         },
+         {
+            "name":"_message",
+            "type":"bytes32"
+         },
+         {
+            "name":"_attachIPFS",
+            "type":"uint32"
+         }
+      ],
+      "name":"addMessage",
+      "outputs":[
 
-export {address, ABI}
+      ],
+      "payable":false,
+      "stateMutability":"nonpayable",
+      "type":"function"
+   },
+   {
+      "constant":true,
+      "inputs":[
+
+      ],
+      "name":"getWalletAddress",
+      "outputs":[
+         {
+            "name":"",
+            "type":"address"
+         }
+      ],
+      "payable":false,
+      "stateMutability":"view",
+      "type":"function"
+   },
+   {
+      "constant":true,
+      "inputs":[
+         {
+            "name":"",
+            "type":"address"
+         }
+      ],
+      "name":"isInstantiation",
+      "outputs":[
+         {
+            "name":"",
+            "type":"bool"
+         }
+      ],
+      "payable":false,
+      "stateMutability":"view",
+      "type":"function"
+   },
+   {
+      "constant":true,
+      "inputs":[
+         {
+            "name":"",
+            "type":"address"
+         },
+         {
+            "name":"",
+            "type":"uint256"
+         }
+      ],
+      "name":"instantiations",
+      "outputs":[
+         {
+            "name":"",
+            "type":"address"
+         }
+      ],
+      "payable":false,
+      "stateMutability":"view",
+      "type":"function"
+   },
+   {
+      "constant":true,
+      "inputs":[
+         {
+            "name":"i",
+            "type":"uint256"
+         }
+      ],
+      "name":"getMessage",
+      "outputs":[
+         {
+            "name":"",
+            "type":"address"
+         },
+         {
+            "name":"",
+            "type":"bytes32"
+         },
+         {
+            "name":"",
+            "type":"uint32"
+         }
+      ],
+      "payable":false,
+      "stateMutability":"view",
+      "type":"function"
+   },
+   {
+      "constant":true,
+      "inputs":[
+         {
+            "name":"creator",
+            "type":"address"
+         }
+      ],
+      "name":"getInstantiationCount",
+      "outputs":[
+         {
+            "name":"",
+            "type":"uint256"
+         }
+      ],
+      "payable":false,
+      "stateMutability":"view",
+      "type":"function"
+   },
+   {
+      "constant":true,
+      "inputs":[
+
+      ],
+      "name":"getMessageLength",
+      "outputs":[
+         {
+            "name":"",
+            "type":"uint256"
+         }
+      ],
+      "payable":false,
+      "stateMutability":"view",
+      "type":"function"
+   },
+   {
+      "inputs":[
+         {
+            "name":"_users",
+            "type":"address[]"
+         },
+         {
+            "name":"_required",
+            "type":"uint256"
+         }
+      ],
+      "payable":false,
+      "stateMutability":"nonpayable",
+      "type":"constructor"
+   },
+   {
+      "anonymous":false,
+      "inputs":[
+         {
+            "indexed":false,
+            "name":"owner",
+            "type":"address"
+         },
+         {
+            "indexed":false,
+            "name":"message",
+            "type":"bytes32"
+         },
+         {
+            "indexed":false,
+            "name":"IPFShash",
+            "type":"uint32"
+         }
+      ],
+      "name":"MessageEvent",
+      "type":"event"
+   },
+   {
+      "anonymous":false,
+      "inputs":[
+         {
+            "indexed":false,
+            "name":"sender",
+            "type":"address"
+         },
+         {
+            "indexed":false,
+            "name":"instantiation",
+            "type":"address"
+         }
+      ],
+      "name":"ContractInstantiation",
+      "type":"event"
+   }
+]
+export {contract, hrAddress, ABI}
