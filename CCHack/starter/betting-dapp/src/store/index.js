@@ -3,7 +3,7 @@ import Vuex from 'vuex'
 import state from './state'
 import getWeb3 from '../util/getWeb3'
 import pollWeb3 from '../util/pollWeb3'
-import getContract from '../util/getContract'
+import contract from '../util/Contract'
 
 Vue.use(Vuex)
 export const store = new Vuex.Store({
@@ -47,11 +47,14 @@ export const store = new Vuex.Store({
        commit('pollWeb3Instance', payload)
     },
     getContractInstance ({commit}) {
-      // console.log("getContractInstance called!")
-      getContract.then(result => {
-        console.log("getConstractInstance result", result)
-        commit('registerContractInstance', result)
-      }).catch(e => console.log(e))
+      console.log("getContractInstance called!")
+      contract().createContract(function(err, result) {
+        console.log(result)
+      })
+      // createContract.then(result => {
+      //   console.log("getConstractInstance result", result)
+      //   commit('registerContractInstance', result)
+      // }).catch(e => console.log(e))
     }
   }
 })
