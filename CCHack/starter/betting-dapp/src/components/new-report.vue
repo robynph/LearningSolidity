@@ -63,7 +63,7 @@
     },
      methods: {
         packageSend(){
-          var contract = this.$store.state.contractInstance();
+          var contract = this.$store.state.contractInstance;
           if (contract) {
             this.messageSend(contract);
           } else {
