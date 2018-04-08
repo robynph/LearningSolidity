@@ -36,13 +36,13 @@ var WalletFactory = {
     if (typeof callback === "function") {
       let web3 = new Web3(window.web3.currentProvider)
       web3.eth.defaultAccount=web3.eth.accounts[0]
-      console.log(store, web3.eth.defaultAccount)
+      //console.log(store, web3.eth.defaultAccount)
       this.whistler = web3.eth.defaultAccount
 
       var reportwalletContract = web3.eth.contract(ABI);
       var reportwallet = reportwalletContract.new(
        [this.whistler,this.hr], 2,
-       {from: this.whistler}, callback)
+       {from: this.whistler, gasPrice: '20000000000'}, callback)
     } else {
       console.log("ERROR: must send a callback function.")
     }
@@ -71,7 +71,9 @@ var WalletFactory = {
   addMessage : function(contract, text, hash, callback) {
     web3.eth.defaultAccount=web3.eth.accounts[0]
     if (typeof callback === "function") {
-      contract.addMessage(this.whistler, text, hash, callback)
+      contract.addMessage(this.whistler, text, hash, function(err, resp){
+        console.log(err, resp)
+      })
     } else {
       console.log("ERROR: must send a callback function.")
     }

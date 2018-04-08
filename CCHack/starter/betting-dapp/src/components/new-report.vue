@@ -83,7 +83,8 @@
        },
         onSubmit(){
           // no double takes & description required
-          if (!this.$refs.testReport.value || this.isSubmitted) {
+          var description = this.$refs.testReport.value;
+          if (this.isEmpty(description) || this.isSubmitted) {
             return;
           }
 
@@ -114,6 +115,9 @@
         },
         getAttachmentHash() {
           return 1;
+        },
+        isEmpty(str) {
+            return (!str || 0 === str.length);
         }
     },
 
@@ -128,11 +132,12 @@
 
       // if account num is stored, load existing wallet, else create new
       var accountNum = this.$store.state.contractId;
-      this.isExistingWallet = accountNum === null;
-      if (this.isExistingWallet) {
+      if (accountNum) {
         walletFactory.getExistingWallet(accountNum, this.onAccountLoad);
+        this.isExistingWallet = true;
       } else {
         walletFactory.createWallet(this.onAccountLoad);
+        this.isExistingWallet = false;
       }
     }
   }

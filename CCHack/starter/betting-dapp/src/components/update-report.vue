@@ -3,7 +3,7 @@
 		<md-card v-if="!isID">
       		<md-card-content>
       		<div class="">
-      			<input id="txtName"  v-model="txtInput" type="text" placeholder="type in your ID"></input>
+      			<input id="txtName"  v-model="txtInput" ref="txtInput" type="text" placeholder="type in your ID"></input>
 				<div>
 			        <md-button class="md-raised md-accent full-width bcolor-red" v-on:click="saveID">
 			          <md-icon>arrow_forward</md-icon>
@@ -22,7 +22,7 @@
       <input id="txtReport"  v-model="txtReport" type="textfield" placeholder="type in your ID"></input>
 
       <div>
-          <md-button class="md-raised md-accent full-width bcolor-red" v-on:click="packageSend()">Send Your Report</md-button>
+          <md-button class="md-raised md-accent full-width bcolor-red" v-on:click="searchForWallet()">Send Your Report</md-button>
         </div>
     </form>
   </div>
@@ -39,7 +39,7 @@
 	    name: 'UpdateReport',
 	    data () { return {
 	    	txtInput: '',
-	    	isID: false, 
+	    	isID: false,
 	    	txtReport: ''
 	    }
 		},
@@ -47,12 +47,22 @@
 		    saveID(){
 		      this.isID = true
 		    },
-		    packageSend(){
-		    	console.log(this.txtInput)
-		    }
+		    searchForWallet(){
+					if (this.isEmpty(input)) {
+						this.showError()
+					} else {
+						walletFactory.getExistingWallet(input, function(err, result) {
+							if (result == null) {
+								this.showError()
+							} else {
+								this.$store.dispatch('setContractInstance', input);
+							}
+						})
+					}
+				}
 		}
-	    
-	 
+
+
 	}
 </script>
 <style>
