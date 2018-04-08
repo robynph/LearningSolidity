@@ -8,8 +8,12 @@ contract ReportRepo is Factory {
 
   address user;
   address HRrep;
+  //uint msgCount;
 
   // enum capture for Escrow state?
+
+  event MessageEvent(address owner, bytes32 message, uint32 IPFShash);
+
 
   User[] users;
   Message[] messages;
@@ -22,7 +26,7 @@ contract ReportRepo is Factory {
 
   struct Message{
     address owner;
-    string message;
+    bytes32 text;
     uint32 attachIPFS;
   }
 
@@ -36,16 +40,24 @@ contract ReportRepo is Factory {
       return walletAddress;
   }
 
-  function addMessage(address _sender, string _message, uint32 _attachIPFS) public {
+  function addMessage(address _sender, bytes32 _message, uint32 _attachIPFS) public {
         Message memory newMsg;
 
         _sender == msg.sender;
         newMsg.owner = _sender;
-        newMsg.message = _message;
+        newMsg.text = _message;
         newMsg.attachIPFS = _attachIPFS;
         messages.push(newMsg);
-
    }
+
+   function getMessageLength() public constant returns (uint) {
+        return messages.length;
+   }
+
+   function getMessage(uint i) public view returns (address, bytes32, uint32) {
+        Message storage currMsg = messages[i];
+        return(currMsg.owner,currMsg.text,currMsg.attachIPFS);
+  }
 
    //function send funds to Escrow
 
