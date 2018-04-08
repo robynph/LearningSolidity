@@ -2,7 +2,7 @@ import Web3 from 'web3'
 import store from '../store/state'
 import {contract, ABI} from './constants/starterContract'
 
-var Contract = {
+var WalletFactory = {
 
   whistler : "0x582f61897691810b8c9AD79d9eB4d98734AF01F1",
   hr : "0x24f503299f816a5a0bb924925fceca03afd5f5d5",
@@ -32,7 +32,7 @@ var Contract = {
   // })
 
   // TODO Figure out how to deploy a contract. Currently throwing invalid address error
-  createContract : function(callback) {
+  createWallet : function(callback) {
     if (typeof callback === "function") {
       let web3 = new Web3(window.web3.currentProvider)
       web3.eth.defaultAccount=web3.eth.accounts[0]
@@ -48,7 +48,7 @@ var Contract = {
     }
   },
 
-  getExistingContract : function(contractId, callback) {
+  getExistingWallet : function(contractId, callback) {
     let web3 = new Web3(window.web3.currentProvider)
     web3.eth.defaultAccount=web3.eth.accounts[0]
 
@@ -77,7 +77,7 @@ var Contract = {
     }
   },
 
-  getMessages : function(contract, callback) {
+  getMessageList : function(contract, callback) {
     if (typeof callback === "function") {
       getMessageCount(contract, function(err, result) {
         var messages = new Array(result)
@@ -100,4 +100,4 @@ var Contract = {
 }
 
 // export default getContract
-export default Contract
+export default WalletFactory

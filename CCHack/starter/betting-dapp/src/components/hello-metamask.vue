@@ -17,13 +17,6 @@ export default {
      }
    },
    methods: {
-     addMessage() {
-       console.log('Wallet', this.$store.state.contractInstance().getWalletAddress({
-         gas: 300000,
-         value: this.$store.state.web3.web3Instance().toWei(this.amount, 'ether'),
-         from: this.$store.state.web3.coinbase
-       }))
-     }
    }
 }
 </script>

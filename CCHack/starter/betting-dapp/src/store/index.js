@@ -3,7 +3,6 @@ import Vuex from 'vuex'
 import state from './state'
 import getWeb3 from '../util/getWeb3'
 import pollWeb3 from '../util/pollWeb3'
-import contract from '../util/Contract'
 
 Vue.use(Vuex)
 export const store = new Vuex.Store({
@@ -29,7 +28,7 @@ export const store = new Vuex.Store({
      },
   registerContractInstance (state, payload) {
        console.log('RegisterContractInstance: ', payload)
-       state.contractInstance = () => payload
+       state.contractInstance = payload
      }
  },
  actions: {
