@@ -1,7 +1,7 @@
 <template>
   <div class="page-container">
     <div class="md-layout md-gutter">
-      
+
       <div class="center md-layout-item md-size-100">
         <img src="@/assets/whistle.svg" alt="whistle blowing" class="logo-img"><router-link :to="'/'"><span class="md-display-3">WhistleBlowing App</span></router-link>
       </div>

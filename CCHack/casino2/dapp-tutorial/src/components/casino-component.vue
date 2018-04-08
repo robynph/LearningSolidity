@@ -34,9 +34,6 @@ export default {
     }
   },
   methods: {
-    addMessage() {
-      console.log('Wallet', this.$store.state.contractInstance)
-    },
     clickNumber (event) {
       console.log('BETTING ON NUMBER, AMOUNT', event.target.innerHTML, this.amount)
       this.winEvent = null
