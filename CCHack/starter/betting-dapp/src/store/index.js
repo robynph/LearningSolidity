@@ -49,6 +49,7 @@ export const store = new Vuex.Store({
     getContractInstance ({commit}) {
       // console.log("getContractInstance called!")
       getContract.then(result => {
+        console.log("getConstractInstance result", result)
         commit('registerContractInstance', result)
       }).catch(e => console.log(e))
     }
