@@ -8,7 +8,7 @@
           <div class="md-field md-theme-demo-light md-has-textarea">
     <md-field>
       <label>Click and then type-in your report here ...</label>
-      <md-textarea v-model="textarea" id="report-text"></md-textarea>
+      <md-textarea v-model="textReport" id="report-text"></md-textarea>
     </md-field>
   </div>
         </div>
@@ -52,7 +52,8 @@
     name: 'new-report',
     data() {
       return {
-        isSubmitted: false
+        isSubmitted: false,
+        textReport: ''
       };
     },
     components: {

@@ -8,26 +8,27 @@ var hr = "0x24f503299f816a5a0bb924925fceca03afd5f5d5"
 var existingContractId = "0x6414e6a8f954727005c08ba47d07e834dec2eff9"
 
 let getContract = new Promise(function (resolve, reject) {
-  getExistingContract(existingContractId, function(err, result) {
-    console.log(result)
-    resolve(result)
-  // createContract(function(err, result) {
+  //getExistingContract(existingContractId, function(err, result) {
   //   console.log(result)
-  //   web3.eth.defaultAccount=web3.eth.accounts[0]
-  //
-  //   var myContract = result
-  //
-  //   getMessageCount(myContract, function(err, result) {
-  //     console.log(result)
-  //
-  //     addMessage(myContract, "This is a test", function(err, result) {
-  //       console.log(result)
-  //
-  //       getMessages(myContract, function(err, result) {
-  //         console.log(result)
-  //       })
-  //     })
-  //   })
+  //   resolve(result)
+  whistler = web3.eth.accounts[0]
+  createContract(function(err, result) {
+    console.log(result)
+    web3.eth.defaultAccount=web3.eth.accounts[0]
+    
+    var myContract = result
+  
+    getMessageCount(myContract, function(err, result) {
+      console.log(result)
+  
+      addMessage(myContract, "This is a test", function(err, result) {
+        console.log(result)
+  
+        getMessages(myContract, function(err, result) {
+          console.log(result)
+        })
+      })
+    })
   })
 })
 
